@@ -1,0 +1,17 @@
+{
+  "name": "chemistry-mastery",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx nodemon",
+    "kill-node": "pkill node"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "description": ""
+}
