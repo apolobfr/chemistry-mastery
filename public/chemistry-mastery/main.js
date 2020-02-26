@@ -5,8 +5,9 @@ import createKeyboardListener from './create-keyboard-listener.js'
 const game = createGame()
 const keyboardListener = createKeyboardListener()
 const canvas = {
-    game: document.getElementById('game_canvas'),
-    overlay: document.getElementById('overlay_canvas')
+    size: 500,
+    tileAmmount: 10,
+    game: document.getElementById('game_canvas')
 }
 const socket = io()
 
