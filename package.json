@@ -1,20 +1,21 @@
 {
   "name": "chemistry-mastery",
+  "author": "Apolo Freitas",
+  "description": "A ludic game that aims to learn on chemistry.",
   "version": "1.0.0",
+  "license": "MIT",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "npx nodemon",
-    "kill-node": "pkill node"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "kill-node:dev": "pkill node"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.3.0"
   },
-  "description": "",
   "devDependencies": {
-    "npx": "^10.2.2"
+    "nodemon": "^2.0.2"
   }
 }
