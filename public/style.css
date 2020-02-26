@@ -1,7 +1,11 @@
 body {
     background-color: #353535;
 }
-iframe {
-    background-color: blanchedalmond;
+#game_canvas {
     border: 5px solid #C0C0C0;
+    height: 500px;
+    width: 500px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
 }

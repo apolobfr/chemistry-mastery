@@ -8,9 +8,17 @@ const app = express()
 const server = http.createServer(app)
 const socket = socketio(server)
 
+const defaultState = {
+    players: {},
+    elements: {},
+    screen: {
+        tilesAmmount: 12
+    }
+}
+
 app.use(express.static('public'))
 
-const game = createGame()
+const game = createGame(defaultState)
 
 game.observer.subscribe((command) => {
     socket.emit(command.type, command)

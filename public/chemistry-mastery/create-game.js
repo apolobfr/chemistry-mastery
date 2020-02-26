@@ -1,25 +1,16 @@
 import Observer from './observer-class.js'
 import createPeriodicTable from './create-periodic-table.js'
 
-export default function createGame() {
+export default function createRoom(state) {
 
     const periodicTable = createPeriodicTable()
-
-    const state = {
-        players: {},
-        elements: {},
-        screen: {
-            width: 10,
-            height: 10
-        }
-    }
 
     const observer = new Observer
 
     function addPlayer(command) {
         const playerId = command.playerId
-        const playerX = 'playerX' in command ? command.playerX : Math.floor(Math.random() * state.screen.width)
-        const playerY = 'playerY' in command ? command.playerY : Math.floor(Math.random() * state.screen.height)
+        const playerX = 'playerX' in command ? command.playerX : Math.floor(Math.random() * state.screen.tilesAmmount)
+        const playerY = 'playerY' in command ? command.playerY : Math.floor(Math.random() * state.screen.tilesAmmount)
 
         state.players[playerId] = {
             x: playerX,
@@ -46,8 +37,8 @@ export default function createGame() {
 
     function addElement(command) {
         const elementId = 'elementId' in command ? command.elementId : Math.floor(Math.random() * 10000000)
-        const elementX = 'elementX' in command ? command.elementX : Math.floor(Math.random() * state.screen.width)
-        const elementY = 'elementY' in command ? command.elementY : Math.floor(Math.random() * state.screen.height)
+        const elementX = 'elementX' in command ? command.elementX : Math.floor(Math.random() * state.screen.tilesAmmount)
+        const elementY = 'elementY' in command ? command.elementY : Math.floor(Math.random() * state.screen.tilesAmmount)
         const atomicNumber = 'atomicNumber' in command ? command.atomicNumber : Math.floor(Math.random() * (periodicTable.elements.length)) + 1
         state.elements[elementId] = {
             x: elementX,
@@ -79,11 +70,11 @@ export default function createGame() {
                     player.y = player.y - 1
                 }
                 else {
-                    player.y = state.screen.height - 1 ;
+                    player.y = state.screen.tilesAmmount - 1 ;
                 }
             },
             ArrowRight(player) {
-                if (player.x + 1 < state.screen.width) {
+                if (player.x + 1 < state.screen.tilesAmmount) {
                     player.x = player.x + 1
                 }
                 else {
@@ -91,7 +82,7 @@ export default function createGame() {
                 }
             },
             ArrowDown(player) {
-                if (player.y + 1 < state.screen.height) {
+                if (player.y + 1 < state.screen.tilesAmmount) {
                     player.y = player.y + 1
                 }
                 else {
@@ -103,7 +94,7 @@ export default function createGame() {
                     player.x = player.x - 1
                 }
                 else {
-                    player.x = state.screen.width - 1;
+                    player.x = state.screen.tilesAmmount - 1;
                 }
             }
         }

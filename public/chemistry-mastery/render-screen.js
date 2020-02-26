@@ -1,8 +1,9 @@
 export default function renderScreen(canvas, game, playerId) {
-    let screen = canvas.game
-    let context = screen.getContext('2d')
-    const tileSize = canvas.size / canvas.tileAmmount
-    context.clearRect(0, 0, screen.height, screen.width)
+    const context = canvas.getContext('2d')
+    const screen = game.state.screen
+    const tileSize = canvas.size / screen.tilesAmmount
+
+    context.clearRect(0, 0, canvas.size, canvas.size)
     
     for (const playerId in game.state.players) {
         const player = game.state.players[playerId]
@@ -18,7 +19,7 @@ export default function renderScreen(canvas, game, playerId) {
 
     const player = game.state.players[playerId]
     context.fillStyle = 'black'
-    context.fillRect(player.x* tileSize, player.y* tileSize, tileSize, tileSize)
+    context.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize)
 
     context.fillStyle = 'white'
 
@@ -26,9 +27,9 @@ export default function renderScreen(canvas, game, playerId) {
         const element = game.state.elements[elementId]
         context.textAlign = 'center'
         context.font = "25px monospace"
-        context.fillText(element.symbol, element.x * screen.width / 10 + 25, element.y * screen.height / 10 + 40)
+        context.fillText(element.symbol, element.x * tileSize + 25, element.y * tileSize + 40)
         context.font = "10px monospace"
-        context.fillText(element.atomicNumber, element.x * screen.width / 10 + 15, element.y * screen.height / 10 + 15)
+        context.fillText(element.atomicNumber, element.x * tileSize + 15, element.y * tileSize + 15)
     }
 
     requestAnimationFrame(() => {
