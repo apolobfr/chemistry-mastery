@@ -1,8 +1,9 @@
 body {
-    background-color: #353535;
+    background-color: rgb(50, 50, 50);
 }
 #game_canvas {
-    border: 5px solid #C0C0C0;
+    background-color: rgb(225, 225, 225);
+    border: 5px solid rgb(190, 190, 190);
     height: 500px;
     width: 500px;
     image-rendering: pixelated;
