@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
     
     socket.on('setup', (state) => {
         
-        const canvas = createCanvas({ divId: 'game_mount', canvasId: 'game_canvas' })
+        const canvas = createCanvas({ divId: 'game_mount', canvasId: 'game_canvas', canvasSize: 500 })
         
         const playerId = socket.id
         const game = createGame(state)
