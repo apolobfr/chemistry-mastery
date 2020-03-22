@@ -6,8 +6,6 @@
   </a>
 </p>
 
-<hr>
-
 ## About
 
 This project aims to be a ludic learn of chemistry using games. It was started by influence of [Felipe Deschamps](https://github.com/filipedeschamps)'s [multiplayer game repository](https://github.com/filipedeschamps/meu-primeiro-jogo-multiplayer), and 
