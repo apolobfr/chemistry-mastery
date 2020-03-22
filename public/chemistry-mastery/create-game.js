@@ -44,8 +44,8 @@ export default function createRoom(state) {
             x: elementX,
             y: elementY,
             atomicNumber: atomicNumber,
-            ...periodicTable.elements[atomicNumber-1],
-            ...periodicTable.types[periodicTable.elements[atomicNumber-1].type]
+            ...periodicTable.elements[atomicNumber - 1],
+            ...periodicTable.types[periodicTable.elements[atomicNumber - 1].type]
         }
     }
 
@@ -57,7 +57,7 @@ export default function createRoom(state) {
     function setState(newState) {
         Object.assign(state, newState)
     }
-    
+
     function movePlayer(command) {
         observer.notify(command)
         const playerId = command.playerId
@@ -70,7 +70,7 @@ export default function createRoom(state) {
                     player.y = player.y - 1
                 }
                 else {
-                    player.y = state.screen.tilesAmmount - 1 ;
+                    player.y = state.screen.tilesAmmount - 1
                 }
             },
             ArrowRight(player) {
@@ -78,7 +78,7 @@ export default function createRoom(state) {
                     player.x = player.x + 1
                 }
                 else {
-                    player.x = 0;
+                    player.x = 0
                 }
             },
             ArrowDown(player) {
@@ -86,7 +86,7 @@ export default function createRoom(state) {
                     player.y = player.y + 1
                 }
                 else {
-                    player.y = 0;
+                    player.y = 0
                 }
             },
             ArrowLeft(player) {
@@ -94,7 +94,7 @@ export default function createRoom(state) {
                     player.x = player.x - 1
                 }
                 else {
-                    player.x = state.screen.tilesAmmount - 1;
+                    player.x = state.screen.tilesAmmount - 1
                 }
             }
         }
@@ -108,7 +108,7 @@ export default function createRoom(state) {
             const player = state.players[playerId]
             for (const elementId in state.elements) {
                 const element = state.elements[elementId]
-    
+
                 if (element.x == player.x && element.y == player.y) {
                     removeElement({ elementId })
                 }

@@ -1,10 +1,15 @@
 body {
-    background-color: rgb(50, 50, 50);
+  background-color: rgb(50, 50, 50);
 }
-#game_canvas {
-    background-color: rgb(225, 225, 225);
-    border: 5px solid rgb(190, 190, 190);
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-    image-rendering: -moz-crisp-edges;
+
+div.flex-horizontal-center-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+div#game_mount {
+  height: 500px;
+  width: min-content;
 }

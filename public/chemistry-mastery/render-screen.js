@@ -4,16 +4,16 @@ export default function renderScreen(canvas, game, playerId) {
     const tileSize = canvas.size / screen.tilesAmmount
 
     context.clearRect(0, 0, canvas.size, canvas.size)
-    
+
     for (const playerId in game.state.players) {
         const player = game.state.players[playerId]
-        context.fillStyle =  '#C0C0C0'
+        context.fillStyle = '#C0C0C0'
         context.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize)
     }
 
     for (const elementId in game.state.elements) {
         const element = game.state.elements[elementId]
-        context.fillStyle = element.color;
+        context.fillStyle = element.color
         context.fillRect(element.x * tileSize, element.y * tileSize, tileSize, tileSize)
     }
 
