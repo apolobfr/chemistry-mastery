@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
-    "kill-node:dev": "pkill node"
+    "kill-node": "pkill node"
   },
   "dependencies": {
     "express": "^4.17.1",
