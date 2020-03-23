@@ -9,41 +9,42 @@ const server = http.createServer(app)
 const socket = socketio(server)
 
 const defaultState = {
-    players: {},
-    elements: {},
-    screen: {
-        tilesAmmount: 12
-    }
+  players: {},
+  elements: {},
+  screen: {
+    tilesAmmount: 12
+  }
 }
 
 app.use(express.static('public'))
 
-const game = createGame(defaultState)
+const game = createGame()
+game.setState(defaultState)
 
-game.observer.subscribe((command) => {
-    socket.emit(command.type, command)
+game.observer.subscribe(command => {
+  socket.emit(command.type, command)
+  console.log(game.state)
 })
 
-socket.on('connection', (socket) => {
-    const playerId = socket.id
-    console.log(`Player connected on Server with id: ${playerId}`)
+socket.on('connection', socket => {
+  const playerId = socket.id
+  console.log(`Player connected on Server with id: ${playerId}`)
 
-    game.addPlayer({ playerId })
-    console.log(game.state)
-    
-    socket.emit('setup', game.state)
+  game.addPlayer({ playerId })
 
-    socket.on('disconnect', () => {
-        game.removePlayer({ playerId })
-    })
+  socket.emit('setup', { state: game.state })
 
-    socket.on('move-player', (command) => {
-        if (command.playerId == playerId) {
-            game.movePlayer(command)
-        }
-    })
+  socket.on('disconnect', () => {
+    game.removePlayer({ playerId })
+  })
+
+  socket.on('move-player', command => {
+    if (command.playerId == playerId) {
+      game.movePlayer(command)
+    }
+  })
 })
 
 server.listen(port, () => {
-    console.log('> Server is listening on port', port)
+  console.log('> Server is listening on port', port)
 })

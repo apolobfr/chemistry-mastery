@@ -1,17 +1,17 @@
 export default class Observer {
-   constructor() {
-      this.observers = []
-   }
+  constructor() {
+    this.observers = []
+  }
 
-   subscribe(f) {
-      this.observers.push(f)
-   }
+  subscribe(f) {
+    this.observers.push(f)
+  }
 
-   unsubscribe(f) {
-      this.observers = this.observers.filter(subscriber => subscriber !== f)
-   }
+  unsubscribe(f) {
+    this.observers = this.observers.filter(subscriber => subscriber !== f)
+  }
 
-   notify(data) {
-      this.observers.forEach(observer => observer(data))
-   }
+  notify(data) {
+    this.observers.forEach(observer => observer(data))
+  }
 }
